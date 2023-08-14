@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TrenchKid</title>
+    <style>
+        /* Your CSS styles here */
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            overflow: hidden; /* Prevent scrolling */
+        }
+
+        .video-background {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw; /* Use viewport units to fill the entire width */
+            height: 56.25vw; /* 16:9 aspect ratio (9/16 * 100) to crop the video */
+            max-height: 100vh; /* Set max-height to prevent black bars on smaller screens */
+            z-index: -1;
+            overflow: hidden;
+        }
+
+        video#background-video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover; /* Make the video fill the container while maintaining aspect ratio */
+            object-position: center center; /* Center the video both horizontally and vertically */
+        }
+
+        .content {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: white;
+            text-align: center;
+            z-index: 1;
+            width: 100%;
+            padding: 20px;
+        }
+
+        /* Your additional styling for the content goes here */
+        .products-container {
+            display: flex;
+            justify-content: center;
+            margin-top: 50px;
+            flex-wrap: wrap;
+        }
+
+        .product {
+            margin: 10px;
+            padding: 10px 20px;
+            border: 1px solid white;
+            cursor: pointer;
+        }
+
+        .product:hover {
+            border: 1px solid red;
+        }
+
+        /* Log in and Sign up links */
+        .user-links {
+            position: absolute;
+            top: 60px;
+            right: 20px;
+            color: white;
+        }
+
+        .user-links a {
+            color: white;
+            text-decoration: none;
+            margin-left: 10px;
+        }
+
+        .user-links a:hover {
+            color: red; /* Change text color to red on hover */
+        }
+
+        /* Menu button and dropdown */
+        .menu-container {
+            position: absolute;
+            top: 60px;
+            left: 20px;
+            color: white;
+            cursor: pointer;
+            z-index: 10;
+        }
+
+        .menu-text {
+            display: block;
+        }
+
+        .menu-dropdown {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background-color: rgba(0, 0, 0, 0.7);
+            padding: 10px;
+            z-index: 9;
+        }
+
+        .menu-container:hover .menu-dropdown {
+            display: block;
+        }
+
+        .menu-dropdown a {
+            display: block;
+            color: white;
+            text-decoration: none;
+            padding: 5px;
+        }
+
+        .menu-dropdown a:hover {
+            color: red;
+        }
+
+        /* Responsive styles */
+        @media screen and (max-width: 768px) {
+            .content {
+                padding: 10px;
+            }
+
+            .products-container {
+                margin-top: 30px;
+            }
+
+            .product {
+                padding: 5px 10px;
+            }
+
+            .menu-container {
+                top: 20px;
+            }
+        }
+
+        /* Make links white in color */
+        a {
+            color: white;
+            text-decoration: none;
+        }
+
+        a:hover {
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    <div class="video-background">
+        <!-- Video as a background -->
+        <video id="background-video" autoplay loop muted playsinline>
+            <source src="CINEMATIC PORTRAIT STREET STYLE _ Sony A7C _ Batis 25mm f2 _ BROLL.mp4" type="video/mp4">
+            Your browser does not support HTML5 video.
+        </video>
+    </div>
+
+    <div class="content">
+        <h1>Welcome to TrenchKid</h1>
+        <div class="products-container">
+            <a href="men.html" class="product" id="men">
+                <h2>Men</h2>
+                <p>Explore our collection for men</p>
+            </a>
+            <a href="women.html" class="product" id="women">
+                <h2>Women</h2>
+                <p>Discover the latest trends for women</p>
+            </a>
+            <a href="kids.html" class="product" id="child">
+                <h2>Kids</h2>
+                <p>Cute and comfortable clothing for children</p>
+            </a>
+        </div>
+    </div>
+
+    <!-- Log in and Sign up links -->
+    <div class="user-links">
+        <a href="login.html" id="login-link">Log In</a>
+        <a href="signup.html" id="signup-link">Sign Up</a>
+    </div>
+
+    <!-- Menu button and dropdown -->
+    <div class="menu-container">
+        <span class="menu-text">☰</span>
+        <div class="menu-dropdown">
+            <a href="perfumes.html">Perfumes</a>
+            <a href="aboutus.html">About Us</a>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            // Hover effect for Log In and Sign Up links
+            $("#login-link, #signup-link").hover(function() {
+                $(this).css("color", "red");
+            }, function() {
+                $(this).css("color", "white");
+            });
+        });
+    </script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+

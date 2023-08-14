@@ -1,0 +1,864 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Men Section</title>
+  <style>
+  /* General styles */
+
+  body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f7f7f7;
+  }
+
+  header {
+    background-color: #000;
+    color: #fff;
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .logo {
+    font-size: 24px;
+    color: #ddd;
+  }
+
+  nav ul {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+    margin: 0;
+    padding: 0;
+    color: #ddd;
+  }
+
+  nav a {
+    color: white;
+    text-decoration: none;
+    font-size: 16px;
+  }
+
+  .cart-count {
+    background-color: red;
+    color: white;
+    padding: 2px 6px;
+    border-radius: 50%;
+    font-size: 12px;
+  }
+
+  main {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 20px;
+    margin: 80px 20px 20px 20px;
+  }
+
+  .product {
+    background-color: #ffffff;
+    border: 1px solid #ddd;
+    padding: 15px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    text-align: center;
+  }
+
+  .product img {
+    max-width: 100%;
+    height: auto;
+    object-fit: cover;
+  }
+
+  .product h3 {
+    font-size: 18px;
+    margin: 10px 0;
+  }
+
+  .price {
+    font-size: 16px;
+    color: #e74c3c;
+  }
+
+  .add-to-cart-button {
+    background-color: #e92f2f;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    text-align: center;
+    text-decoration: none;
+    display: block;
+    font-size: 14px;
+    margin-top: 15px;
+    cursor: pointer;
+    border-radius: 3px;
+    transition: background-color 0.3s;
+  }
+
+  .add-to-cart-button:hover {
+    background-color: #c42929;
+  }
+
+  aside {
+    width: 300px;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    padding: 20px;
+    position: fixed;
+    top: 0;
+    right: 0;
+    height: 100vh;
+    overflow-y: auto;
+  }
+
+  .cart-sidebar h2 {
+    font-size: 20px;
+    margin-bottom: 10px;
+  }
+
+  .cart-items {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .cart-items li {
+    margin: 5px 0;
+    font-size: 14px;
+  }
+
+  .total-price {
+    font-size: 16px;
+    margin-top: 20px;
+  }
+
+  .checkout-button {
+    background-color: #e92f2f;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    text-align: center;
+    text-decoration: none;
+    display: block;
+    font-size: 14px;
+    margin-top: 20px;
+    cursor: pointer;
+    border-radius: 3px;
+    transition: background-color 0.3s;
+  }
+
+  .checkout-button:hover {
+    background-color: #c42929;
+  }
+  .logo a {
+      color: white;
+      text-decoration: lawngreen;
+    }
+    .h3 {
+      color:#fff;
+    }
+
+.slide {
+  display: none;
+  max-width: 100%;
+  height: auto;
+}
+.active {
+  display: block;
+}
+.slide-indicators {
+  display: flex;
+  justify-content: center;
+  margin-top: 10px;
+}
+.indicator {
+  width: 10px;
+  height: 10px;
+  background-color: gray;
+  border-radius: 50%;
+  margin: 0 5px;
+  cursor: pointer;
+}
+.indicator.active {
+  background-color: black;
+}
+
+
+/* Add a style for the Filters heading */
+.filter-dropdown h2 {
+font-size: 20px;
+margin-bottom: 10px;
+}
+
+/* Style for the filter options container */
+.filter-dropdown {
+position: relative;
+margin-bottom: 20px; /* Added margin for spacing */
+}
+
+/* Style for the filter options */
+.filter-dropdown li {
+display: inline-block;
+margin-right: 10px; /* Added spacing between filter options */
+}
+
+/* Hover effect for filter options */
+.filter-dropdown a:hover {
+background-color: #f0f0f0;
+color: black; /* Added to improve visibility */
+}
+
+footer {
+background-color: #000;
+color: #fff;
+text-align: center;
+padding: 10px 0;
+}
+
+footer p {
+margin: 0;
+}
+
+/* Responsive adjustments */
+
+/* Adjust header */
+@media screen and (max-width: 768px) {
+  header {
+      padding: 10px;
+  }
+
+  .logo {
+      font-size: 18px;
+  }
+
+  nav ul {
+      font-size: 14px;
+      gap: 10px;
+  }
+}
+
+/* Adjust main grid */
+@media screen and (max-width: 1024px) {
+  main {
+      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+      gap: 15px;
+      margin: 60px 10px 10px 10px;
+  }
+}
+
+
+
+/* Adjust aside */
+@media screen and (max-width: 1024px) {
+  aside {
+      width: 100%;
+      position: static;
+      margin-top: 20px;
+  }
+
+  .cart-items li {
+      font-size: 12px;
+      margin: 3px 0;
+  }
+
+  .total-price,
+  .checkout-button {
+      font-size: 14px;
+      margin-top: 15px;
+      padding: 6px 12px;
+  }
+}
+
+/* Adjust slide indicators */
+@media screen and (max-width: 768px) {
+  .indicator {
+      width: 8px;
+      height: 8px;
+      margin: 0 4px;
+  }
+}
+
+/* Adjust footer */
+@media screen and (max-width: 768px) {
+  footer {
+      padding: 5px 0;
+  }
+
+  footer p {
+      font-size: 12px;
+  }
+}
+/* Adjust product styles */
+@media screen and (max-width: 768px) {
+  .product {
+      padding: 10px;
+  }
+
+  .product h3 {
+      font-size: 16px;
+  }
+
+  .price {
+      font-size: 14px;
+  }
+
+  .add-to-cart-button {
+      font-size: 12px;
+      padding: 6px 12px;
+      margin-top: 10px;
+  }
+}
+
+/* Adjust cart items for smaller screens */
+@media screen and (max-width: 768px) {
+  .cart-items li {
+      margin: 3px 0;
+      font-size: 12px;
+  }
+
+  .total-price {
+      font-size: 14px;
+      margin-top: 15px;
+  }
+
+  .checkout-button {
+      font-size: 12px;
+      margin-top: 15px;
+      padding: 6px 12px;
+  }
+}
+
+  
+
+      
+  </style>
+</head>
+<body>
+  <header>
+    <h1 class="logo"><a href="index.html">TrenchKid</a></h1>
+  </header>
+
+  <main class="products">
+    <!-- Product 1 -->
+    <div class="product" data-category="SHIRT">
+      <div class="product-slider">
+        <img src="https://static.zara.net/photos///2023/I/0/2/p/5884/485/250/2/w/357/5884485250_2_1_1.jpg?ts=1689938679973" alt="Product 1 - Image 1" class="slide active">
+        <img src="https://static.zara.net/photos///2023/I/0/2/p/5884/485/250/2/w/750/5884485250_2_2_1.jpg?ts=1689938679836" alt="Product 1 - Image 2" class="slide">
+        <img src="https://static.zara.net/photos///2023/I/0/2/p/5884/485/250/2/w/750/5884485250_6_1_1.jpg?ts=1689851976669" alt="Product 1 - Image 3" class="slide">
+      </div>
+      <h3>FLORAL PRINT SHIRT</h3>
+      <p class="price">65.90 CAD</p>
+      <div class="size-options">
+        <label class="size-label" for="size">Select Size:</label>
+        <select class="size-select" id="size">
+          <option value="S">S</option>
+          <option value="M">M</option>
+          <option value="L">L</option>
+          <option value="XL">XL</option>
+        </select>
+      </div>
+      <button class="add-to-cart-button" data-product-id="1">Add to Cart</button>
+    </div>
+
+        <!-- Product 2 -->
+        <div class="product" data-category="SHIRT">
+            <div class="product-slider">
+              <img src="https://static.zara.net/photos///2023/I/0/2/p/7545/534/021/2/w/380/7545534021_2_1_1.jpg?ts=1691142187769" alt="Product 2 - Image 1" class="slide active">
+              <img src="https://static.zara.net/photos///2023/I/0/2/p/7545/534/021/2/w/750/7545534021_2_2_1.jpg?ts=1691142187969" alt="Product 2 - Image 2" class="slide">
+              <img src="https://static.zara.net/photos///2023/I/0/2/p/7545/534/021/2/w/750/7545534021_6_1_1.jpg?ts=1691047049362" alt="Product 2 - Image 3" class="slide">
+            </div>
+            <h3>ABSTRACT PRINT STRETCH SHIRT</h3>
+            <p class="price">75.90 CAD</p>
+            <div class="size-options">
+              <label class="size-label" for="size">Select Size:</label>
+              <select class="size-select" id="size">
+                <option value="S">S</option>
+                <option value="M">M</option>
+                <option value="L">L</option>
+                <option value="XL">XL</option>
+              </select>
+            </div>
+            <button class="add-to-cart-button" data-product-id="2">Add to Cart</button>
+          </div>
+
+    <!-- Add more products similarly... -->
+  </main>
+
+  <main class="products">
+    <!-- Product 3 -->
+    <div class="product" data-category="SHIRT">
+      <div class="product-slider">
+        <img src="https://static.zara.net/photos///2023/I/0/2/p/7200/403/711/2/w/380/7200403711_2_1_1.jpg?ts=1688720191932" alt="Product 3 - Image 1" class="slide active">
+        <img src="https://static.zara.net/photos///2023/I/0/2/p/7200/403/711/2/w/750/7200403711_2_3_1.jpg?ts=1688720191988" alt="Product 3 - Image 2" class="slide">
+        <img src="https://static.zara.net/photos///2023/I/0/2/p/7200/403/711/2/w/750/7200403711_6_1_1.jpg?ts=1688642261388" alt="Product 3 - Image 3" class="slide">
+      </div>
+      <h3>EMBROIDERED COTTON - LINEN SHIRT</h3>
+      <p class="price">77.90 CAD</p>
+      <div class="size-options">
+        <label class="size-label" for="size">Select Size:</label>
+        <select class="size-select" id="size">
+          <option value="S">S</option>
+          <option value="M">M</option>
+          <option value="L">L</option>
+          <option value="XL">XL</option>
+        </select>
+      </div>
+      <button class="add-to-cart-button" data-product-id="1">Add to Cart</button>
+    </div>
+
+        <!-- Product 4 -->
+        <div class="product" data-category="SHIRT">
+            <div class="product-slider">
+              <img src="https://static.zara.net/photos///2023/I/0/2/p/6085/371/400/2/w/750/6085371400_1_1_1.jpg?ts=1690962647916" alt="Product 4 - Image 1" class="slide active">
+              <img src="https://static.zara.net/photos///2023/I/0/2/p/6085/371/400/2/w/750/6085371400_2_3_1.jpg?ts=1690962646444" alt="Product 4 - Image 2" class="slide">
+              <img src="https://static.zara.net/photos///2023/I/0/2/p/6085/371/400/2/w/750/6085371400_6_1_1.jpg?ts=1690803522826" alt="Product 4 - Image 3" class="slide">
+            </div>
+            <h3>DENIM SHIRT</h3>
+            <p class="price">99.90 CAD</p>
+            <div class="size-options">
+              <label class="size-label" for="size">Select Size:</label>
+              <select class="size-select" id="size">
+                <option value="S">S</option>
+                <option value="M">M</option>
+                <option value="L">L</option>
+                <option value="XL">XL</option>
+              </select>
+            </div>
+            <button class="add-to-cart-button" data-product-id="2">Add to Cart</button>
+          </div>
+
+    <!-- Add more products similarly... -->
+  </main>
+
+      <!-- Add more products similarly... -->
+    </main>
+
+    <main class="products">
+      <!-- Product 5 -->
+      <div class="product" data-category="T SHIRT">
+        <div class="product-slider">
+          <img src="https://static.zara.net/photos///2023/I/0/1/p/6674/302/712/2/w/380/6674302712_2_1_1.jpg?ts=1691136266245" alt="Product 5 - Image 1" class="slide active">
+          <img src="https://static.zara.net/photos///2023/I/0/1/p/6674/302/712/2/w/750/6674302712_2_3_1.jpg?ts=1691136272573" alt="Product 5 - Image 2" class="slide">
+          <img src="https://static.zara.net/photos///2023/I/0/2/p/6674/302/712/2/w/750/6674302712_6_1_1.jpg?ts=1691057348492" alt="Product 5 - Image 3" class="slide">
+        </div>
+        <h3>MUSCLE FIT KNIT T-SHIRT</h3>
+        <p class="price">48.90 CAD</p>
+        <div class="size-options">
+          <label class="size-label" for="size">Select Size:</label>
+          <select class="size-select" id="size">
+            <option value="S">S</option>
+            <option value="M">M</option>
+            <option value="L">L</option>
+            <option value="XL">XL</option>
+          </select>
+        </div>
+        <button class="add-to-cart-button" data-product-id="1">Add to Cart</button>
+      </div>
+  
+          <!-- Product 6 -->
+          <div class="product" data-category="T SHIRT">
+              <div class="product-slider">
+                <img src="https://static.zara.net/photos///2023/I/0/2/p/6224/373/800/2/w/357/6224373800_2_1_1.jpg?ts=1690962648319" alt="Product 6 - Image 1" class="slide active">
+                <img src="https://static.zara.net/photos///2023/I/0/2/p/6224/373/800/2/w/750/6224373800_2_3_1.jpg?ts=1690962642697" alt="Product 6 - Image 2" class="slide">
+                <img src="https://static.zara.net/photos///2023/I/0/2/p/6224/373/800/2/w/750/6224373800_6_1_1.jpg?ts=1689753312621" alt="Product 6 - Image 3" class="slide">
+              </div>
+              <h3>CONTRAST PATCH T-SHIRT</h3>
+              <p class="price">33.90 CAD</p>
+              <div class="size-options">
+                <label class="size-label" for="size">Select Size:</label>
+                <select class="size-select" id="size">
+                  <option value="S">S</option>
+                  <option value="M">M</option>
+                  <option value="L">L</option>
+                  <option value="XL">XL</option>
+                </select>
+              </div>
+              <button class="add-to-cart-button" data-product-id="2">Add to Cart</button>
+            </div>
+  
+      <!-- Add more products similarly... -->
+    </main>
+
+    <main class="products">
+        <!-- Product 7 -->
+        <div class="product" data-category="T SHIRT">
+          <div class="product-slider">
+            <img src="https://static.zara.net/photos///2023/I/0/2/p/6224/386/803/2/w/357/6224386803_2_1_1.jpg?ts=1691052740372" alt="Product 7 - Image 1" class="slide active">
+            <img src="https://static.zara.net/photos///2023/I/0/2/p/6224/386/803/2/w/750/6224386803_2_2_1.jpg?ts=1691052740562" alt="Product 7 - Image 2" class="slide">
+            <img src="https://static.zara.net/photos///2023/I/0/2/p/6224/386/803/2/w/750/6224386803_6_1_1.jpg?ts=1690188976211" alt="Product 7 - Image 3" class="slide">
+          </div>
+          <h3>COMBINATION PRINT T-SHIRT</h3>
+          <p class="price">78.90 CAD</p>
+          <div class="size-options">
+            <label class="size-label" for="size">Select Size:</label>
+            <select class="size-select" id="size">
+              <option value="S">S</option>
+              <option value="M">M</option>
+              <option value="L">L</option>
+              <option value="XL">XL</option>
+            </select>
+          </div>
+          <button class="add-to-cart-button" data-product-id="1">Add to Cart</button>
+        </div>
+    
+            <!-- Product 8 -->
+            <div class="product" data-category="T SHIRT">
+                <div class="product-slider">
+                  <img src="https://static.zara.net/photos///2023/V/0/2/p/4231/424/811/2/w/530/4231424811_2_4_1.jpg?ts=1673527523209" alt="Product 8 - Image 1" class="slide active">
+                  <img src="https://static.zara.net/photos///2023/V/0/2/p/4231/424/811/2/w/750/4231424811_2_3_1.jpg?ts=1673527503376" alt="Product 8 - Image 2" class="slide">
+                  <img src="https://static.zara.net/photos///2023/I/0/2/p/4231/425/811/2/w/750/4231425811_6_1_1.jpg?ts=1689085939253" alt="Product 8 - Image 3" class="slide">
+                </div>
+                <h3>COTTON KNIT T-SHIRT</h3>
+                <p class="price">43.90 CAD</p>
+                <div class="size-options">
+                  <label class="size-label" for="size">Select Size:</label>
+                  <select class="size-select" id="size">
+                    <option value="S">S</option>
+                    <option value="M">M</option>
+                    <option value="L">L</option>
+                    <option value="XL">XL</option>
+                  </select>
+                </div>
+                <button class="add-to-cart-button" data-product-id="2">Add to Cart</button>
+              </div>
+    
+        <!-- Add more products similarly... -->
+      </main>
+
+      <main class="products">
+        <!-- Product 9 -->
+        <div class="product" data-category="pant">
+          <div class="product-slider">
+            <img src="https://static.zara.net/photos///2023/I/0/2/p/5520/310/505/2/w/600/5520310505_2_4_1.jpg?ts=1690381578767" alt="Product 9 - Image 1" class="slide active">
+            <img src="https://static.zara.net/photos///2023/I/0/2/p/5520/310/505/2/w/750/5520310505_2_3_1.jpg?ts=1690381578665" alt="Product 9 - Image 2" class="slide">
+            <img src="https://static.zara.net/photos///2023/I/0/2/p/5520/310/505/2/w/750/5520310505_6_1_1.jpg?ts=1691478020277" alt="Product 9 - Image 3" class="slide">
+          </div>
+          <h3>RELAXED FIT CARGO PANTS</h3>
+          <p class="price">124.90 CAD</p>
+          <div class="size-options">
+            <label class="size-label" for="size">Select Size:</label>
+            <select class="size-select" id="size">
+              <option value="S">S</option>
+              <option value="M">M</option>
+              <option value="L">L</option>
+              <option value="XL">XL</option>
+            </select>
+          </div>
+          <button class="add-to-cart-button" data-product-id="1">Add to Cart</button>
+        </div>
+    
+            <!-- Product 10 -->
+            <div class="product" data-category="pant">
+                <div class="product-slider">
+                  <img src="https://static.zara.net/photos///2023/I/0/2/p/2553/311/251/2/w/750/2553311251_1_1_1.jpg?ts=1691072084046" alt="Product 10 - Image 1" class="slide active">
+                  <img src="https://static.zara.net/photos///2023/I/0/2/p/2553/311/251/2/w/750/2553311251_2_3_1.jpg?ts=1691072083470" alt="Product 10 - Image 2" class="slide">
+                  <img src="https://static.zara.net/photos///2023/I/0/2/p/2553/311/251/2/w/750/2553311251_6_1_1.jpg?ts=1690966390592" alt="Product 10 - Image 3" class="slide">
+                </div>
+                <h3>UTILITY POCKET PANTS</h3>
+                <p class="price">114.90 CAD</p>
+                <div class="size-options">
+                  <label class="size-label" for="size">Select Size:</label>
+                  <select class="size-select" id="size">
+                    <option value="S">S</option>
+                    <option value="M">M</option>
+                    <option value="L">L</option>
+                    <option value="XL">XL</option>
+                  </select>
+                </div>
+                <button class="add-to-cart-button" data-product-id="2">Add to Cart</button>
+              </div>
+    
+        <!-- Add more products similarly... -->
+      </main>
+
+
+      
+      <main class="products">
+        <!-- Product 11 -->
+        <div class="product" data-category="pant">
+          <div class="product-slider">
+            <img src="https://static.zara.net/photos///2023/I/0/2/p/6987/313/800/2/w/357/6987313800_1_1_1.jpg?ts=1690444374925" alt="Product 11 - Image 1" class="slide active">
+            <img src="https://static.zara.net/photos///2023/I/0/2/p/6987/313/800/2/w/750/6987313800_2_3_1.jpg?ts=1691408770607" alt="Product 11 - Image 2" class="slide">
+            <img src="https://static.zara.net/photos///2023/I/0/2/p/6987/313/800/2/w/750/6987313800_6_1_1.jpg?ts=1690184548934" alt="Product 11- Image 3" class="slide">
+          </div>
+          <h3>OVERSIZED CARGO PANTS</h3>
+          <p class="price">79.90 CAD</p>
+          <div class="size-options">
+            <label class="size-label" for="size">Select Size:</label>
+            <select class="size-select" id="size">
+              <option value="S">S</option>
+              <option value="M">M</option>
+              <option value="L">L</option>
+              <option value="XL">XL</option>
+            </select>
+          </div>
+          <button class="add-to-cart-button" data-product-id="1">Add to Cart</button>
+        </div>
+    
+            <!-- Product 12 -->
+            <div class="product" data-category="pant">
+                <div class="product-slider">
+                  <img src="https://static.zara.net/photos///2023/I/0/2/p/4087/337/712/2/w/380/4087337712_1_1_1.jpg?ts=1691141197401" alt="Product 12 - Image 1" class="slide active">
+                  <img src="https://static.zara.net/photos///2023/I/0/2/p/4087/337/712/2/w/750/4087337712_2_3_1.jpg?ts=1691141197490" alt="Product 12 - Image 2" class="slide">
+                  <img src="https://static.zara.net/photos///2023/I/0/2/p/4087/337/712/2/w/750/4087337712_6_1_1.jpg?ts=1691075860380" alt="Product 12 - Image 3" class="slide">
+                </div>
+                <h3>RELAXED TEXTURED PANTS</h3>
+                <p class="price">89.90 CAD</p>
+                <div class="size-options">
+                  <label class="size-label" for="size">Select Size:</label>
+                  <select class="size-select" id="size">
+                    <option value="S">S</option>
+                    <option value="M">M</option>
+                    <option value="L">L</option>
+                    <option value="XL">XL</option>
+                  </select>
+                </div>
+                <button class="add-to-cart-button" data-product-id="2">Add to Cart</button>
+              </div>
+    
+        <!-- Add more products similarly... -->
+      </main>
+  
+      <main class="products">
+        <!-- Product 13 -->
+        <div class="product" data-category="jean">
+          <div class="product-slider">
+            <img src="https://static.zara.net/photos///2023/I/0/2/p/6688/320/436/2/w/750/6688320436_1_1_1.jpg?ts=1688716941364" alt="Product 13 - Image 1" class="slide active">
+            <img src="https://static.zara.net/photos///2023/I/0/2/p/6688/320/436/2/w/750/6688320436_2_3_1.jpg?ts=1688552338973" alt="Product 13 - Image 2" class="slide">
+            <img src="https://static.zara.net/photos///2023/I/0/2/p/6688/320/436/2/w/750/6688320436_6_1_1.jpg?ts=1688393011629" alt="Product 13- Image 3" class="slide">
+          </div>
+          <h3>BAGGY FIT JEANS</h3>
+          <p class="price">144.90 CAD</p>
+          <div class="size-options">
+            <label class="size-label" for="size">Select Size:</label>
+            <select class="size-select" id="size">
+              <option value="S">S</option>
+              <option value="M">M</option>
+              <option value="L">L</option>
+              <option value="XL">XL</option>
+            </select>
+          </div>
+          <button class="add-to-cart-button" data-product-id="1">Add to Cart</button>
+        </div>
+    
+            <!-- Product 14 -->
+            <div class="product" data-category="jean">
+                <div class="product-slider">
+                  <img src="https://static.zara.net/photos///2023/I/0/2/p/8062/303/406/2/w/750/8062303406_1_1_1.jpg?ts=1689608344735" alt="Product 14 - Image 1" class="slide active">
+                  <img src="https://static.zara.net/photos///2023/I/0/2/p/8062/303/406/2/w/750/8062303406_2_3_1.jpg?ts=1689608344623" alt="Product 14 - Image 2" class="slide">
+                  <img src="https://static.zara.net/photos///2023/I/0/2/p/8062/405/406/2/w/750/8062405406_6_1_1.jpg?ts=1688122815082" alt="Product 14 - Image 3" class="slide">
+                </div>
+                <h3>STRAIGHT FIT JEANS</h3>
+                <p class="price">64.90 CAD</p>
+                <div class="size-options">
+                  <label class="size-label" for="size">Select Size:</label>
+                  <select class="size-select" id="size">
+                    <option value="S">S</option>
+                    <option value="M">M</option>
+                    <option value="L">L</option>
+                    <option value="XL">XL</option>
+                  </select>
+                </div>
+                <button class="add-to-cart-button" data-product-id="2">Add to Cart</button>
+              </div>
+    
+        <!-- Add more products similarly... -->
+      </main>
+
+      <main class="products">
+        <!-- Product 15 -->
+        <div class="product" data-category="jean">
+          <div class="product-slider">
+            <img src="https://static.zara.net/photos///2023/I/0/2/p/5585/313/400/2/w/750/5585313400_1_1_1.jpg?ts=1691150973420" alt="Product 15 - Image 1" class="slide active">
+            <img src="https://static.zara.net/photos///2023/I/0/2/p/5585/313/400/2/w/750/5585313400_2_3_1.jpg?ts=1691150973784" alt="Product 15 - Image 2" class="slide">
+            <img src="https://static.zara.net/photos///2023/I/0/2/p/5585/313/400/2/w/750/5585313400_6_1_1.jpg?ts=1690976424113" alt="Product 15- Image 3" class="slide">
+          </div>
+          <h3>SLIT JEANS</h3>
+          <p class="price">104.90 CAD</p>
+          <div class="size-options">
+            <label class="size-label" for="size">Select Size:</label>
+            <select class="size-select" id="size">
+              <option value="S">S</option>
+              <option value="M">M</option>
+              <option value="L">L</option>
+              <option value="XL">XL</option>
+            </select>
+          </div>
+          <button class="add-to-cart-button" data-product-id="1">Add to Cart</button>
+        </div>
+    
+            <!-- Product 16 -->
+            <div class="product" data-category="jean">
+                <div class="product-slider">
+                  <img src="https://static.zara.net/photos///2023/I/0/2/p/5862/306/407/2/w/750/5862306407_1_1_1.jpg?ts=1690383999122" alt="Product 16 - Image 1" class="slide active">
+                  <img src="https://static.zara.net/photos///2023/I/0/2/p/5862/306/407/2/w/750/5862306407_2_3_1.jpg?ts=1690383998978" alt="Product 16 - Image 2" class="slide">
+                  <img src="https://static.zara.net/photos///2023/I/0/2/p/5862/306/407/2/w/750/5862306407_6_1_1.jpg?ts=1691419351807" alt="Product 16 - Image 3" class="slide">
+                </div>
+                <h3>SLOUCHY FIT JEANS </h3>
+                <p class="price">94.90 CAD</p>
+                <div class="size-options">
+                  <label class="size-label" for="size">Select Size:</label>
+                  <select class="size-select" id="size">
+                    <option value="S">S</option>
+                    <option value="M">M</option>
+                    <option value="L">L</option>
+                    <option value="XL">XL</option>
+                  </select>
+                </div>
+                <button class="add-to-cart-button" data-product-id="2">Add to Cart</button>
+              </div>
+    
+        <!-- Add more products similarly... -->
+      </main>
+
+
+    <!-- Add more products similarly... -->
+  
+<aside>
+  <!-- ... (Cart sidebar and jQuery script) ... -->
+  <h2>Filter</h2>
+  <div class="filter-dropdown">
+    <li><a href="#" data-filter="all">All</a></li>
+    <li><a href="#" data-filter="T SHIRT">T SHIRT</a></li>
+    <li><a href="#" data-filter="SHIRT">SHIRT</a></li>
+    <li><a href="#" data-filter="pant">PANTS</a></li>
+    <li><a href="#" data-filter="jean">JEANS</a></li>
+    <!-- Add more filter options as needed -->
+    
+</div>
+  
+    <h2>Your Cart</h2>
+    <ul class="cart-items">
+      <!-- Cart items -->
+    </ul>
+    <p class="total-price">Total Price: $0.00</p>
+    <a href="file:///C:/Users/abhij/AppData/Local/Temp/Temp1_C0886802_E_COM_PROJECT.zip/project/zaracheckout.html" class="checkout-button">Checkout</button>
+  </aside>
+
+  <footer>
+    <p>&copy; 2023 TrenchKid. All rights reserved.</p>
+  </footer>
+  
+
+
+
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+
+    function setupSlideShow(slider) {
+        let currentSlide = 0;
+        const slides = slider.find('.slide');
+      
+        function showSlide(index) {
+          slides.removeClass('active');
+          slides.eq(index).addClass('active');
+        }
+      
+        slider.append('<div class="slide-indicators"></div>');
+        const indicators = slider.find('.slide-indicators');
+      
+        slides.each(function(index) {
+          indicators.append(`<div class="indicator ${index === 0 ? 'active' : ''}" data-slide-index="${index}"></div>`);
+        });
+      
+        indicators.on('click', '.indicator', function() {
+          currentSlide = parseInt($(this).attr('data-slide-index'));
+          showSlide(currentSlide);
+          updateIndicators();
+        });
+      
+        function updateIndicators() {
+          indicators.find('.indicator').removeClass('active');
+          indicators.find(`[data-slide-index="${currentSlide}"]`).addClass('active');
+        }
+      
+        showSlide(currentSlide);
+      }
+      
+      // Call the setupSlideShow function for each product's slider
+      $('.product-slider').each(function() {
+        setupSlideShow($(this));
+      });
+      
+$(document).ready(function() {
+    const cart = [];
+
+    function updateCart() {
+      $('.cart-items').empty();
+      let total = 0;
+
+      cart.forEach((item, index) => {
+        $('.cart-items').append(`<li>${item.product} - ${item.size} - $${item.price} <button class="remove-from-cart-button" data-index="${index}">Remove</button></li>`);
+        total += item.price;
+      });
+
+      $('.total-price').text(`Total Price: $${total.toFixed(2)}`);
+      $('.cart-count').text(cart.length);
+    }
+
+    $('.add-to-cart-button').click(function() {
+      const product = $(this).siblings('h3').text();
+      const selectedSize = $(this).siblings('.size-options').find('.size-select').val();
+      const price = parseFloat($(this).siblings('.price').text().replace('$', ''));
+
+      if (selectedSize) {
+        cart.push({ product, size: selectedSize, price });
+        updateCart();
+        alertWithCancel(`Added ${product} (Size: ${selectedSize}) to cart.`, function() {
+          // Handle cancel option
+          cart.pop(); // Remove the last added item from cart
+          updateCart();
+        });
+      } else {
+        alert('Please select a size before adding to cart.');
+      }
+    });
+
+    // Add a new function to show an alert box with cancel option
+    function alertWithCancel(message, onCancel) {
+        const result = confirm(message + ' Do you want to proceed?');
+        if (!result && onCancel) {
+          onCancel();
+        }
+      }
+      
+
+    // Rest of your existing code...
+
+    // Remove item from cart when "Remove" button is clicked
+    $(document).on('click', '.remove-from-cart-button', function() {
+      const index = $(this).data('index');
+      cart.splice(index, 1);
+      updateCart();
+    });
+
+    // Rest of your existing code...
+
+    $('.filter-dropdown a').click(function(e) {
+      e.preventDefault();
+      const filterValue = $(this).data('filter');
+    
+      if (filterValue === 'all') {
+        $('.product').show();
+      } else {
+        $('.product').hide();
+        $(`.product[data-category="${filterValue}"]`).show(); // Use corrected data attribute name
+      }
+    });
+  });
+
+
+</script>
+
+</body>
+</html>
+
+
+
+
+
+
+
+

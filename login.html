@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login Page</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="login-container">
+    <div class="login-left">
+      <img src="https://i.ibb.co/ykMQrgw/kid.png" alt="Logo">
+      <h2>Welcome Back</h2>
+      <p>Login to access your account</p>
+    </div>
+    <div class="login-right">
+      <h2>Login</h2>
+      <form>
+        <input type="text" placeholder="Username">
+        <input type="password" placeholder="Password">
+        <button type="submit">Login</button>
+        <p class="forgot-password"><a href="file:///C:/Users/abhij/Downloads/project/foregetpass.html">Forgot Password?</a></p>
+      </form>
+      <p class="signup-link">Don't have an account? <a href="signup.html">Sign up</a></p>
+    </div>
+  </div>
+  <script src="script.js"></script>
+</body>
+
+<style>
+  /* styles.css */
+body {
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background-color: #f2f2f2;
+}
+
+.login-container {
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  display: flex;
+  overflow: hidden;
+}
+
+.login-left {
+  background-color: #007bff;
+  color: #fff;
+  padding: 60px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.login-left img {
+  width: 100px;
+  height: 100px;
+  margin-bottom: 20px;
+}
+
+.login-right {
+  flex: 1;
+  padding: 40px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.login-right h2 {
+  margin-bottom: 20px;
+}
+
+.login-right input {
+  margin-bottom: 15px;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.login-right button {
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.login-right button:hover {
+  background-color: #0056b3;
+}
+
+.forgot-password a {
+  color: #777;
+  text-decoration: none;
+}
+
+.signup-link {
+  margin-top: 20px;
+}
+
+.signup-link a {
+  color: #007bff;
+  text-decoration: none;
+}
+
+</style>
+
+<script>
+  document.querySelector('form').addEventListener('submit', function(event) {
+    event.preventDefault();
+    const username = event.target.querySelector('input[type="text"]').value;
+    const password = event.target.querySelector('input[type="password"]').value;
+  
+    if (username.trim() === '' || password.trim() === '') {
+      alert('Please fill in the credentials');
+    } else {
+      alert(`Logged in as ${username}`);
+    }
+  });
+  </script>
+</html>
+
+

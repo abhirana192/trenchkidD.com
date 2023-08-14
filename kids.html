@@ -1,0 +1,604 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kids Section</title>
+  <style>
+    body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #f7f7f7;
+      }
+  
+      header {
+        background-color: #000;
+        color: #fff;
+        padding: 20px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+  
+      .logo {
+        font-size: 24px;
+        color: #ddd;
+      }
+  
+      nav ul {
+        list-style: none;
+        display: flex;
+        gap: 20px;
+        margin: 0;
+        padding: 0;
+        color: #ddd;
+      }
+  
+      nav a {
+        color: white;
+        text-decoration: none;
+        font-size: 16px;
+      }
+  
+      .cart-count {
+        background-color: red;
+        color: white;
+        padding: 2px 6px;
+        border-radius: 50%;
+        font-size: 12px;
+      }
+  
+      main {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+        gap: 20px;
+        margin: 80px 20px 20px 20px;
+      }
+  
+      .product {
+        background-color: #ffffff;
+        border: 1px solid #ddd;
+        padding: 15px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        text-align: center;
+      }
+  
+      .product img {
+        max-width: 100%;
+        height: auto;
+        object-fit: cover;
+      }
+  
+      .product h3 {
+        font-size: 18px;
+        margin: 10px 0;
+      }
+  
+      .price {
+        font-size: 16px;
+        color: #e74c3c;
+      }
+  
+      .add-to-cart-button {
+        background-color: #e92f2f;
+        color: white;
+        border: none;
+        padding: 8px 16px;
+        text-align: center;
+        text-decoration: none;
+        display: block;
+        font-size: 14px;
+        margin-top: 15px;
+        cursor: pointer;
+        border-radius: 3px;
+        transition: background-color 0.3s;
+      }
+  
+      .add-to-cart-button:hover {
+        background-color: #c42929;
+      }
+  
+      aside {
+        width: 300px;
+        background-color: #fff;
+        border: 1px solid #ddd;
+        padding: 20px;
+        position: fixed;
+        top: 0;
+        right: 0;
+        height: 100vh;
+        overflow-y: auto;
+      }
+  
+      .cart-sidebar h2 {
+        font-size: 20px;
+        margin-bottom: 10px;
+      }
+  
+      .cart-items {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+      }
+  
+      .cart-items li {
+        margin: 5px 0;
+        font-size: 14px;
+      }
+  
+      .total-price {
+        font-size: 16px;
+        margin-top: 20px;
+      }
+  
+      .checkout-button {
+        background-color: #e92f2f;
+        color: white;
+        border: none;
+        padding: 8px 16px;
+        text-align: center;
+        text-decoration: none;
+        display: block;
+        font-size: 14px;
+        margin-top: 20px;
+        cursor: pointer;
+        border-radius: 3px;
+        transition: background-color 0.3s;
+      }
+  
+      .checkout-button:hover {
+        background-color: #c42929;
+      }
+      .logo a {
+          color: white;
+          text-decoration: lawngreen;
+        }
+        .h3 {
+          color:#fff;
+        }
+
+    .slide {
+      display: none;
+      max-width: 100%;
+      height: auto;
+    }
+    .active {
+      display: block;
+    }
+    .slide-indicators {
+      display: flex;
+      justify-content: center;
+      margin-top: 10px;
+    }
+    .indicator {
+      width: 10px;
+      height: 10px;
+      background-color: gray;
+      border-radius: 50%;
+      margin: 0 5px;
+      cursor: pointer;
+    }
+    .indicator.active {
+      background-color: black;
+    }
+
+    
+  /* Add a style for the Filters heading */
+.filter-dropdown h2 {
+    font-size: 20px;
+    margin-bottom: 10px;
+}
+
+/* Style for the filter options container */
+.filter-dropdown {
+    position: relative;
+    margin-bottom: 20px; /* Added margin for spacing */
+}
+
+/* Style for the filter options */
+.filter-dropdown li {
+    display: inline-block;
+    margin-right: 10px; /* Added spacing between filter options */
+}
+
+/* Hover effect for filter options */
+.filter-dropdown a:hover {
+    background-color: #f0f0f0;
+    color: black; /* Added to improve visibility */
+}
+
+footer {
+    background-color: #000;
+    color: #fff;
+    text-align: center;
+    padding: 10px 0;
+  }
+  
+  footer p {
+    margin: 0;
+  }
+  
+
+      
+  </style>
+</head>
+<body>
+  <header>
+    <h1 class="logo"><a href="index.html">TrenchKid</a></h1>
+  </header>
+
+  <main class="products">
+    <!-- Product 1 -->
+    <div class="product" data-category="SHIRT">
+      <div class="product-slider">
+        <img src="https://static.zara.net/photos///2023/I/0/3/p/1639/703/400/102/w/750/1639703400_1_1_1.jpg?ts=1691048011341" alt="Product 1 - Image 1" class="slide active">
+        <img src="https://static.zara.net/photos///2023/I/0/3/p/1639/703/400/2/w/750/1639703400_6_1_1.jpg?ts=1690538206348" alt="Product 1 - Image 2" class="slide">
+        <img src="https://static.zara.net/photos///2023/I/0/3/p/1639/703/400/2/w/750/1639703400_6_2_1.jpg?ts=1690538206345" alt="Product 1 - Image 3" class="slide">
+      </div>
+      <h3>TIERED DENIM DRESS</h3>
+      <p class="price">64.90 CAD</p>
+      <div class="size-options">
+        <label class="size-label" for="size">Select Size:</label>
+        <select class="size-select" id="size">
+          <option value="S">S(6 YEARS)</option>
+          <option value="M">M(8 YEARS)</option>
+          <option value="L">L(10 YEARS)</option>
+          <option value="XL">XL(10-14 YEARS)</option>
+        </select>
+      </div>
+      <button class="add-to-cart-button" data-product-id="1">Add to Cart</button>
+    </div>
+
+        <!-- Product 2 -->
+        <div class="product" data-category="T SHIRT">
+            <div class="product-slider">
+              <img src="https://static.zara.net/photos///2023/I/0/3/p/1716/760/800/302/w/750/1716760800_1_1_1.jpg?ts=1690791024336" alt="Product 2 - Image 1" class="slide active">
+              <img src="https://static.zara.net/photos///2023/I/0/3/p/1716/760/800/2/w/750/1716760800_6_1_1.jpg?ts=1690354698062" alt="Product 2 - Image 2" class="slide">
+              <img src="https://static.zara.net/photos///2023/I/0/3/p/1716/760/800/2/w/750/1716760800_6_2_1.jpg?ts=1690354730553" alt="Product 2 - Image 3" class="slide">
+            </div>
+            <h3>TEXT T-SHIRT</h3>
+            <p class="price">75.90 CAD</p>
+            <div class="size-options">
+              <label class="size-label" for="size">Select Size:</label>
+              <select class="size-select" id="size">
+                <option value="S">S(6 YEARS)</option>
+                <option value="M">M(8 YEARS)</option>
+                <option value="L">L(10 YEARS)</option>
+                <option value="XL">XL(10-14 YEARS)</option>
+              </select>
+            </div>
+            <button class="add-to-cart-button" data-product-id="2">Add to Cart</button>
+          </div>
+
+    <!-- Add more products similarly... -->
+  </main>
+
+  <main class="products">
+    <!-- Product 3 -->
+    <div class="product" data-category="SHIRT">
+      <div class="product-slider">
+        <img src="https://static.zara.net/photos///2023/I/0/3/p/6175/332/052/102/w/750/6175332052_1_1_1.jpg?ts=1690976010037" alt="Product 3 - Image 1" class="slide active">
+        <img src="https://static.zara.net/photos///2023/I/0/3/p/6175/332/052/2/w/750/6175332052_6_1_1.jpg?ts=1689696674408" alt="Product 3 - Image 2" class="slide">
+        <img src="https://static.zara.net/photos///2023/I/0/3/p/6175/332/052/2/w/750/6175332052_6_2_1.jpg?ts=1689696675146" alt="Product 3 - Image 3" class="slide">
+      </div>
+      <h3>CONTRAST TOPSTITCHED PARACHUTE OVERALLS</h3>
+      <p class="price">67.90 CAD</p>
+      <div class="size-options">
+        <label class="size-label" for="size">Select Size:</label>
+        <select class="size-select" id="size">
+            <option value="S">S(6 YEARS)</option>
+            <option value="M">M(8 YEARS)</option>
+            <option value="L">L(10 YEARS)</option>
+            <option value="XL">XL(10-14 YEARS)</option>
+          </select>
+      </div>
+      <button class="add-to-cart-button" data-product-id="1">Add to Cart</button>
+    </div>
+
+        <!-- Product 4 -->
+        <div class="product" data-category="T SHIRT">
+            <div class="product-slider">
+              <img src="https://static.zara.net/photos///2023/I/0/3/p/5644/754/505/303/w/750/5644754505_1_1_1.jpg?ts=1690445935753" alt="Product 4 - Image 1" class="slide active">
+              <img src="https://static.zara.net/photos///2023/I/0/3/p/5644/754/505/2/w/750/5644754505_6_1_1.jpg?ts=1688464396535" alt="Product 4 - Image 2" class="slide">
+              <img src="https://static.zara.net/photos///2023/I/0/3/p/5644/754/505/2/w/750/5644754505_6_2_1.jpg?ts=1688464396826" alt="Product 4 - Image 3" class="slide">
+            </div>
+            <h3>RIPSTOP VEST</h3>
+            <p class="price">99.90 CAD</p>
+            <div class="size-options">
+              <label class="size-label" for="size">Select Size:</label>
+              <select class="size-select" id="size">
+                <option value="S">S(6 YEARS)</option>
+                <option value="M">M(8 YEARS)</option>
+                <option value="L">L(10 YEARS)</option>
+                <option value="XL">XL(10-14 YEARS)</option>
+              </select>
+            </div>
+            <button class="add-to-cart-button" data-product-id="2">Add to Cart</button>
+          </div>
+
+    <!-- Add more products similarly... -->
+  </main>
+
+      <!-- Add more products similarly... -->
+    </main>
+
+    <main class="products">
+      <!-- Product 5 -->
+      <div class="product" data-category="SHIRT">
+        <div class="product-slider">
+          <img src="https://static.zara.net/photos///2023/I/0/3/p/6242/243/055/102/w/750/6242243055_1_1_1.jpg?ts=1691405100502" alt="Product 5 - Image 1" class="slide active">
+          <img src="https://static.zara.net/photos///2023/I/0/3/p/6242/243/055/2/w/750/6242243055_6_1_1.jpg?ts=1691593344941" alt="Product 5 - Image 2" class="slide">
+          <img src="https://static.zara.net/photos///2023/I/0/3/p/6242/243/055/2/w/750/6242243055_6_3_1.jpg?ts=1690881396119" alt="Product 5 - Image 3" class="slide">
+        </div>
+        <h3>STRIPED LINEN DRESS</h3>
+        <p class="price">84.90 CAD</p>
+        <div class="size-options">
+          <label class="size-label" for="size">Select Size:</label>
+          <select class="size-select" id="size">
+            <option value="S">S(6 YEARS)</option>
+            <option value="M">M(8 YEARS)</option>
+            <option value="L">L(10 YEARS)</option>
+            <option value="XL">XL(10-14 YEARS)</option>
+          </select>
+        </div>
+        <button class="add-to-cart-button" data-product-id="1">Add to Cart</button>
+      </div>
+  
+          <!-- Product 6 -->
+          <div class="product" data-category="T SHIRT">
+              <div class="product-slider">
+                <img src="https://static.zara.net/photos///2023/I/0/3/p/4805/630/712/302/w/750/4805630712_1_1_1.jpg?ts=1684766956602" alt="Product 6 - Image 1" class="slide active">
+                <img src="https://static.zara.net/photos///2023/I/0/3/p/4805/630/712/2/w/750/4805630712_6_1_1.jpg?ts=1684499809265" alt="Product 6 - Image 2" class="slide">
+                <img src="https://static.zara.net/photos///2023/I/0/3/p/4805/630/712/2/w/750/4805630712_6_2_1.jpg?ts=1684499809338" alt="Product 6 - Image 3" class="slide">
+              </div>
+              <h3>SMILEYWORLD ® HAPPY COLLECTION SWEATSHIRT</h3>
+              <p class="price">99.90 CAD</p>
+              <div class="size-options">
+                <label class="size-label" for="size">Select Size:</label>
+                <select class="size-select" id="size">
+                    <option value="S">S(6 YEARS)</option>
+                    <option value="M">M(8 YEARS)</option>
+                    <option value="L">L(10 YEARS)</option>
+                    <option value="XL">XL(10-14 YEARS)</option>
+                  </select>
+              </div>
+              <button class="add-to-cart-button" data-product-id="2">Add to Cart</button>
+            </div>
+  
+      <!-- Add more products similarly... -->
+    </main>
+
+    <main class="products">
+        <!-- Product 7 -->
+        <div class="product" data-category="SHIRT">
+          <div class="product-slider">
+            <img src="https://static.zara.net/photos///2023/I/0/3/p/6220/214/407/103/w/750/6220214407_1_1_1.jpg?ts=1688111911693" alt="Product 7 - Image 1" class="slide active">
+            <img src="https://static.zara.net/photos///2023/I/0/3/p/6220/214/407/2/w/750/6220214407_6_1_1.jpg?ts=1687787464692" alt="Product 7 - Image 2" class="slide">
+            <img src="https://static.zara.net/photos///2023/I/0/3/p/6220/214/407/2/w/750/6220214407_6_3_1.jpg?ts=1687787465447" alt="Product 7 - Image 3" class="slide">
+          </div>
+          <h3>CUT OUT JUMPSUIT WITH BUTTONS</h3>
+          <p class="price">78.90 CAD</p>
+          <div class="size-options">
+            <label class="size-label" for="size">Select Size:</label>
+            <select class="size-select" id="size">
+                <option value="S">S(6 YEARS)</option>
+                <option value="M">M(8 YEARS)</option>
+                <option value="L">L(10 YEARS)</option>
+                <option value="XL">XL(10-14 YEARS)</option>
+              </select>
+          </div>
+          <button class="add-to-cart-button" data-product-id="1">Add to Cart</button>
+        </div>
+    
+            <!-- Product 8 -->
+            <div class="product" data-category="T SHIRT">
+                <div class="product-slider">
+                  <img src="https://static.zara.net/photos///2023/I/0/3/p/6887/548/420/302/w/750/6887548420_1_1_1.jpg?ts=1688379293750" alt="Product 8 - Image 1" class="slide active">
+                  <img src="https://static.zara.net/photos///2023/I/0/3/p/6887/548/420/2/w/750/6887548420_6_1_1.jpg?ts=1688377549279" alt="Product 8 - Image 2" class="slide">
+                  <img src="https://static.zara.net/photos///2023/I/0/3/p/6887/548/420/2/w/750/6887548420_6_2_1.jpg?ts=1688377549085" alt="Product 8 - Image 3" class="slide">
+                </div>
+                <h3>OXFORD SHIRT</h3>
+                <p class="price">43.90 CAD</p>
+                <div class="size-options">
+                  <label class="size-label" for="size">Select Size:</label>
+                  <select class="size-select" id="size">
+                    <option value="S">S(6 YEARS)</option>
+                    <option value="M">M(8 YEARS)</option>
+                    <option value="L">L(10 YEARS)</option>
+                    <option value="XL">XL(10-14 YEARS)</option>
+                  </select>
+                </div>
+                <button class="add-to-cart-button" data-product-id="2">Add to Cart</button>
+              </div>
+    
+        <!-- Add more products similarly... -->
+      </main>
+
+      <main class="products">
+        <!-- Product 9 -->
+        <div class="product" data-category="SHIRT">
+          <div class="product-slider">
+            <img src="https://static.zara.net/photos///2023/I/0/3/p/3402/701/250/102/w/750/3402701250_1_1_1.jpg?ts=1686242364235" alt="Product 9 - Image 1" class="slide active">
+            <img src="https://static.zara.net/photos///2023/I/0/3/p/3402/701/250/2/w/750/3402701250_6_1_1.jpg?ts=1688549304622" alt="Product 9 - Image 2" class="slide">
+            <img src="https://static.zara.net/photos///2023/I/0/3/p/3402/701/250/2/w/750/3402701250_6_3_1.jpg?ts=1688549305028" alt="Product 9 - Image 3" class="slide">
+          </div>
+          <h3>RIBBED HALTER TOP</h3>
+          <p class="price">54.90 CAD</p>
+          <div class="size-options">
+            <label class="size-label" for="size">Select Size:</label>
+            <select class="size-select" id="size">
+                <option value="S">S(6 YEARS)</option>
+                <option value="M">M(8 YEARS)</option>
+                <option value="L">L(10 YEARS)</option>
+                <option value="XL">XL(10-14 YEARS)</option>
+              </select>
+          </div>
+          <button class="add-to-cart-button" data-product-id="1">Add to Cart</button>
+        </div>
+    
+            <!-- Product 10 -->
+            <div class="product" data-category="T SHIRT">
+                <div class="product-slider">
+                  <img src="https://static.zara.net/photos///2023/I/0/1/p/6706/764/802/307/w/750/6706764802_1_1_1.jpg?ts=1686304626736" alt="Product 10 - Image 1" class="slide active">
+                  <img src="https://static.zara.net/photos///2023/I/0/3/p/6706/764/802/2/w/750/6706764802_6_1_1.jpg?ts=1685351507810" alt="Product 10 - Image 2" class="slide">
+                  <img src="https://static.zara.net/photos///2023/I/0/3/p/6706/764/802/2/w/750/6706764802_6_2_1.jpg?ts=1685351507765" alt="Product 10 - Image 3" class="slide">
+                </div>
+                <h3>STRETCH SUIT JACKET</h3>
+                <p class="price">114.90 CAD</p>
+                <div class="size-options">
+                  <label class="size-label" for="size">Select Size:</label>
+                  <select class="size-select" id="size">
+                    <option value="S">S(6 YEARS)</option>
+                    <option value="M">M(8 YEARS)</option>
+                    <option value="L">L(10 YEARS)</option>
+                    <option value="XL">XL(10-14 YEARS)</option>
+                  </select>
+                </div>
+                <button class="add-to-cart-button" data-product-id="2">Add to Cart</button>
+              </div>
+    
+        <!-- Add more products similarly... -->
+      </main>
+
+
+      
+      
+
+
+    <!-- Add more products similarly... -->
+  
+<aside>
+  <!-- ... (Cart sidebar and jQuery script) ... -->
+  <h2>Filter</h2>
+  <div class="filter-dropdown">
+    <li><a href="#" data-filter="all">All</a></li>
+    <li><a href="#" data-filter="T SHIRT">BOYS</a></li>
+    <li><a href="#" data-filter="SHIRT">GIRLS</a></li>
+    <!-- Add more filter options as needed -->
+    
+</div>
+  
+    <h2>Your Cart</h2>
+    <ul class="cart-items">
+      <!-- Cart items -->
+    </ul>
+    <p class="total-price">Total Price: $0.00</p>
+    <a href="file:///C:/Users/abhij/AppData/Local/Temp/Temp1_C0886802_E_COM_PROJECT.zip/project/zaracheckout.html" class="checkout-button">Checkout</button>
+  </aside>
+
+  <footer>
+    <p>&copy; 2023 TrenchKid. All rights reserved.</p>
+  </footer>
+  
+
+
+
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+
+    function setupSlideShow(slider) {
+        let currentSlide = 0;
+        const slides = slider.find('.slide');
+      
+        function showSlide(index) {
+          slides.removeClass('active');
+          slides.eq(index).addClass('active');
+        }
+      
+        slider.append('<div class="slide-indicators"></div>');
+        const indicators = slider.find('.slide-indicators');
+      
+        slides.each(function(index) {
+          indicators.append(`<div class="indicator ${index === 0 ? 'active' : ''}" data-slide-index="${index}"></div>`);
+        });
+      
+        indicators.on('click', '.indicator', function() {
+          currentSlide = parseInt($(this).attr('data-slide-index'));
+          showSlide(currentSlide);
+          updateIndicators();
+        });
+      
+        function updateIndicators() {
+          indicators.find('.indicator').removeClass('active');
+          indicators.find(`[data-slide-index="${currentSlide}"]`).addClass('active');
+        }
+      
+        showSlide(currentSlide);
+      }
+      
+      // Call the setupSlideShow function for each product's slider
+      $('.product-slider').each(function() {
+        setupSlideShow($(this));
+      });
+      
+$(document).ready(function() {
+    const cart = [];
+
+    function updateCart() {
+      $('.cart-items').empty();
+      let total = 0;
+
+      cart.forEach((item, index) => {
+        $('.cart-items').append(`<li>${item.product} - ${item.size} - $${item.price} <button class="remove-from-cart-button" data-index="${index}">Remove</button></li>`);
+        total += item.price;
+      });
+
+      $('.total-price').text(`Total Price: $${total.toFixed(2)}`);
+      $('.cart-count').text(cart.length);
+    }
+
+    $('.add-to-cart-button').click(function() {
+      const product = $(this).siblings('h3').text();
+      const selectedSize = $(this).siblings('.size-options').find('.size-select').val();
+      const price = parseFloat($(this).siblings('.price').text().replace('$', ''));
+
+      if (selectedSize) {
+        cart.push({ product, size: selectedSize, price });
+        updateCart();
+        alertWithCancel(`Added ${product} (Size: ${selectedSize}) to cart.`, function() {
+          // Handle cancel option
+          cart.pop(); // Remove the last added item from cart
+          updateCart();
+        });
+      } else {
+        alert('Please select a size before adding to cart.');
+      }
+    });
+
+    // Add a new function to show an alert box with cancel option
+    function alertWithCancel(message, onCancel) {
+        const result = confirm(message + ' Do you want to proceed?');
+        if (!result && onCancel) {
+          onCancel();
+        }
+      }
+      
+
+    // Rest of your existing code...
+
+    // Remove item from cart when "Remove" button is clicked
+    $(document).on('click', '.remove-from-cart-button', function() {
+      const index = $(this).data('index');
+      cart.splice(index, 1);
+      updateCart();
+    });
+
+    // Rest of your existing code...
+
+    $('.filter-dropdown a').click(function(e) {
+      e.preventDefault();
+      const filterValue = $(this).data('filter');
+    
+      if (filterValue === 'all') {
+        $('.product').show();
+      } else {
+        $('.product').hide();
+        $(`.product[data-category="${filterValue}"]`).show(); // Use corrected data attribute name
+      }
+    });
+  });
+</script>
+
+</body>
+</html>
